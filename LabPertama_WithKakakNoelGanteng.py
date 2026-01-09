@@ -9,3 +9,4 @@ if letter.lower() in secret_word.lower():
 	print("Huruf ada di dalam secret word")
 else: 
 	print("Huruf tidak ada di dalam secret word")
+# dah bisa
