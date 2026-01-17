@@ -1,0 +1,42 @@
+word = "kucing"
+attempts = 6
+guessed = []
+
+display = ["_"] * len(word)
+
+print("🎮 Hangman Sederhana")
+print("Kata:", " ".join(display))
+
+while attempts > 0 and "_" in display:
+    guess = input("Tebak satu huruf: ").lower()
+
+    # cek input
+    if len(guess) != 1 or not guess.isalpha():
+        print("Masukkan 1 huruf saja!")
+        continue
+
+    # cek huruf yang sama
+    if guess in guessed:
+        print("Huruf sudah ditebak, coba huruf lain.")
+        print("Sisa kesempatan:", attempts)
+        continue
+
+    guessed.append(guess)
+
+    if guess in word:
+        print("Benar!")
+        for i in range(len(word)):
+            if word[i] == guess:
+                display[i] = guess
+    else:
+        attempts -= 1
+        print("Salah!")
+        print("Sisa kesempatan:", attempts)
+
+    print("Kata:", " ".join(display))
+
+if "_" not in display:
+    print("🎉 Kamu menang!")
+else:
+    print("💀 Kamu kalah!")
+    print("Kata yang benar:", word)
