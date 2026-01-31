@@ -1,0 +1,45 @@
+def updateText(secret, guessed):
+    text = ""
+    for i in range(len(secret)):
+        if guessed[i]:
+            text += secret[i]
+        else:
+            text += "_"
+
+        if i != len(secret) - 1:
+            text += " "
+    return text
+
+
+def main(secret):
+    chances = 5
+
+    guessed = [False] * len(secret)
+
+    while chances > 0:
+        display = updateText(secret, guessed)
+        print("Word:", display)
+        print("Chances:", chances)
+
+        guess = input("Guess a letter: ")
+
+        found = False
+        for i in range(len(secret)):
+            if secret[i] == guess:
+                guessed[i] = True
+                found = True
+                
+        if found:
+            print ("Congrats", guess, "is in the secret word")
+
+        if not found:
+            chances -= 1
+
+        if "_" not in display:
+            print("Word:", display)
+            print("You Win!")
+            return
+
+    print("You Lose!")
+
+main("belle")

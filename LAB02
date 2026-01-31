@@ -4,7 +4,7 @@ guessed = []
 
 display = ["_"] * len(word)
 
-print("🎮 Hangman Sederhana")
+print("🎮 Hangman 2.0")
 print("Kata:", " ".join(display))
 
 while attempts > 0 and "_" in display:
